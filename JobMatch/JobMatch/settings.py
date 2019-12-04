@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'rest_framework_social_oauth2',
-    # 'parse',
+    'parse',
+    'resume',
+    'stages',
 
 ]
 
