@@ -15,8 +15,8 @@ def longest_dur(data):
     max_ = 0
     for line in data:
         if "None" not in line.values():
-            apply = time.mktime(time.strptime(line["Applied"], '%m-%d-%Y %H:%M'))
-            offer = time.mktime(time.strptime(line["Offer"], '%m-%d-%Y %H:%M'))
+            apply = time.mktime(time.strptime(line["applied"], '%m-%d-%Y %H:%M'))
+            offer = time.mktime(time.strptime(line["offer"], '%m-%d-%Y %H:%M'))
             max_ = max(max_, (offer - apply) / 3600)
     return max_
 
@@ -31,9 +31,9 @@ def most_fail_stage(data):
             stages[i] += 1
     i = stages.index(max(stages))
     if i == 3:
-        stage = "Applied"
+        stage = "applied"
     elif i == 2:
-        stage = "Phone"
+        stage = "phone"
     else:
-        stage = 'Onsite'
+        stage = 'onsite'
     return stage, stages[i]

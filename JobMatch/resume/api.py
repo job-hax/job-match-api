@@ -40,11 +40,11 @@ class ResumeStat(APIView):
         with open('resume/data.json', 'r') as json_file:
             data = [json.loads(x) for x in json_file.readlines()]
         res = []
-        attr = 'loc'  # top_skills, loc, languages, certs, pubs, honors, edu
+        attr = 'edu'  # top_skills, loc, languages, certs, pubs, honors, edu
         for x, cnt in common_attr(attr, data):
             res.append("{}, {}, {} people".format(attr, x, cnt))
 
-        company = 'Google'  # amazon, apple, facebook, google, salesforce
+        company = 'google'  # amazon, apple, facebook, google, salesforce
         for skill, cnt in top_skills_in(company, data):
             res.append("{}, {} people, {}".format(company, cnt, skill))
 
