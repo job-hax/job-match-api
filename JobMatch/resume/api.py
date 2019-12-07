@@ -6,7 +6,8 @@ from rest_framework import status
 from .serializers import ResumeSerializer 
 from .models import Resume
 import json
-from .job_stat import common_attr, top_skills_in
+from .job_stat import common_attr, top_skills_in, top_companies, top_positions
+
 
 class ResumeAuthentication(ObtainAuthToken):
     def post(self, request, *args, **kwargs):
@@ -47,6 +48,9 @@ class ResumeStat(APIView):
         company = 'google'  # amazon, apple, facebook, google, salesforce
         for skill, cnt in top_skills_in(company, data):
             res.append("{}, {} people, {}".format(company, cnt, skill))
+
+        res.append(top_companies(data))
+        res.append(top_positions(data))
 
         return Response(res)
 
